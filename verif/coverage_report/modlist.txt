@@ -1,0 +1,19 @@
+Design Module List
+
+Total Module Definition Coverage Summary 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH 
+ 98.13  98.56 100.00  95.87 --      98.08 
+
+
+Total modules in report: 8
+-------------------------------------------------------------------------------
+SCORE  LINE   COND   TOGGLE FSM    BRANCH NAME               
+ 86.62  98.25 --      75.00 --     --     tb_top             
+ 92.26  85.71 100.00 100.00 --      83.33 alu                
+ 94.44 100.00 100.00  77.78 --     100.00 imm_gen            
+ 98.97 100.00 100.00  95.90 --     100.00 cpu_top            
+ 99.80 100.00 100.00  99.22 --     100.00 reg_file           
+100.00 100.00 --     100.00 --     100.00 control_unit       
+100.00 100.00 100.00 100.00 --     100.00 data_memory        
+100.00 --     --     100.00 --     --     instruction_memory 
+

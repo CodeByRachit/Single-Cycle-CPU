@@ -1,7 +1,8 @@
 # Makefile for CPU Verification using Synopsys VCS
 
 VCS = vcs
-VCS_FLAGS = -sverilog -full64 -debug_access+all +v2k -timescale=1ns/1ps
+COV_FLAGS = -cm line+cond+fsm+tgl+branch
+VCS_FLAGS = -sverilog -full64 -debug_access+all +v2k -timescale=1ns/1ps $(COV_FLAGS)
 
 RTL_DIR = ../RTL
 VERIF_DIR = .
@@ -33,7 +34,8 @@ SEED ?= random
 
 run:
 	mkdir -p results
-	./simv +ntb_random_seed=$(SEED)
+	./simv +ntb_random_seed=$(SEED) $(COV_FLAGS)
+	urg -dir simv.vdb -format text -report coverage_report
 
 unit_test: test_alu test_cu test_imm test_mem test_rf
 

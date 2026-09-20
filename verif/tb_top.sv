@@ -3,6 +3,7 @@
 `include "cpu_item.sv"
 `include "cpu_reference_model.sv"
 `include "cpu_scoreboard.sv"
+`include "cpu_coverage.sv"
 
 module tb_top;
     // Signals
@@ -25,6 +26,7 @@ module tb_top;
     cpu_item item;
     cpu_reference_model ref_model;
     cpu_scoreboard scoreboard;
+    cpu_coverage coverage;
 
     // Reset generation and main test
     initial begin
@@ -35,6 +37,7 @@ module tb_top;
         item = new();
         ref_model = new();
         scoreboard = new(ref_model);
+        coverage = new();
 
         rst_n = 0;
         #20;
@@ -79,6 +82,8 @@ module tb_top;
             if (!item.randomize()) begin
                 $fatal(1, "Randomization failed!");
             end
+            
+            coverage.sample(item);
             
             // Backdoor write instruction to DUT Instruction Memory at current PC
             dut.imem.rom[dut.pc[7:0]] = item.to_inst();

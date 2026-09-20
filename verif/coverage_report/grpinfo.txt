@@ -1,0 +1,506 @@
+Group : $unit::cpu_coverage::cg_cpu
+
+===============================================================================
+Group : $unit::cpu_coverage::cg_cpu
+===============================================================================
+SCORE  INSTANCES WEIGHT GOAL   AT LEAST PER INSTANCE AUTO BIN MAX PRINT MISSING 
+100.00 100.00    1      100    1        1            64           64            
+
+
+Source File(s) : 
+
+/home/24bec049/single_cycle_cpu/verif/cpu_coverage.sv
+
+1 Instances:
+
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING NAME                   
+100.00 1      100    1        64           64            tb_top.coverage.cg_cpu 
+
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group   $unit::cpu_coverage::cg_cpu
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 38       0         38      100.00  
+Crosses   72       0         72      100.00  
+
+
+Variables for Group  $unit::cpu_coverage::cg_cpu
+
+
+VARIABLE  EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_opcode 14       0         14      100.00  100  1      1        0                    
+cp_rd     8        0         8       100.00  100  1      1        0                    
+cp_rs1    8        0         8       100.00  100  1      1        0                    
+cp_rs2    8        0         8       100.00  100  1      1        0                    
+
+
+Crosses for Group  $unit::cpu_coverage::cg_cpu
+
+
+CROSS        EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST PRINT MISSING COMMENT 
+cr_opcode_rd 72       0         72      100.00  100  1      1        0                     
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_opcode
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 14       0         14      100.00  
+
+
+User Defined Bins for cp_opcode
+
+
+Bins
+
+NAME    COUNT  AT LEAST 
+op_ret  16577  1        
+op_jal  99820  1        
+op_jmp  100396 1        
+op_bne  100339 1        
+op_beq  100364 1        
+op_lui  16713  1        
+op_sw   99864  1        
+op_lw   100018 1        
+op_addi 32940  1        
+op_xor  66714  1        
+op_or   66732  1        
+op_and  66294  1        
+op_sub  66783  1        
+op_add  66446  1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_rd
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 8        0         8       100.00  
+
+
+User Defined Bins for cp_rd
+
+
+Bins
+
+NAME       COUNT  AT LEAST 
+R1_to_R7_1 125577 1        
+R1_to_R7_2 124928 1        
+R1_to_R7_3 124889 1        
+R1_to_R7_4 124498 1        
+R1_to_R7_5 125281 1        
+R1_to_R7_6 125188 1        
+R1_to_R7_7 124858 1        
+R0         124781 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_rs1
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 8        0         8       100.00  
+
+
+User Defined Bins for cp_rs1
+
+
+Bins
+
+NAME       COUNT  AT LEAST 
+R0_to_R7_0 125273 1        
+R0_to_R7_1 125494 1        
+R0_to_R7_2 124873 1        
+R0_to_R7_3 124760 1        
+R0_to_R7_4 124835 1        
+R0_to_R7_5 124954 1        
+R0_to_R7_6 124801 1        
+R0_to_R7_7 125010 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_rs2
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 8        0         8       100.00  
+
+
+User Defined Bins for cp_rs2
+
+
+Bins
+
+NAME       COUNT  AT LEAST 
+R0_to_R7_0 124123 1        
+R0_to_R7_1 125131 1        
+R0_to_R7_2 125279 1        
+R0_to_R7_3 125371 1        
+R0_to_R7_4 125445 1        
+R0_to_R7_5 124877 1        
+R0_to_R7_6 125264 1        
+R0_to_R7_7 124510 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Cross cr_opcode_rd
+
+
+Samples crossed: cp_opcode cp_rd
+CATEGORY                           EXPECTED UNCOVERED COVERED PERCENT MISSING 
+TOTAL                              72       0         72      100.00          
+Automatically Generated Cross Bins 72       0         72      100.00          
+User Defined Cross Bins            0        0         0                       
+
+
+Automatically Generated Cross Bins for cr_opcode_rd
+
+
+Bins
+
+cp_opcode cp_rd      COUNT AT LEAST 
+op_jal    R0         12423 1        
+op_jal    R1_to_R7_7 12630 1        
+op_jal    R1_to_R7_6 12463 1        
+op_jal    R1_to_R7_1 12546 1        
+op_jal    R1_to_R7_2 12374 1        
+op_jal    R1_to_R7_3 12553 1        
+op_jal    R1_to_R7_4 12383 1        
+op_jal    R1_to_R7_5 12448 1        
+op_lui    R1_to_R7_6 2132  1        
+op_lui    R1_to_R7_7 2188  1        
+op_lui    R0         2084  1        
+op_lui    R1_to_R7_1 2149  1        
+op_lui    R1_to_R7_2 1945  1        
+op_lui    R1_to_R7_4 2113  1        
+op_lui    R1_to_R7_5 2069  1        
+op_lui    R1_to_R7_3 2033  1        
+op_lw     R0         12365 1        
+op_lw     R1_to_R7_1 12487 1        
+op_lw     R1_to_R7_6 12547 1        
+op_lw     R1_to_R7_7 12709 1        
+op_lw     R1_to_R7_3 12514 1        
+op_lw     R1_to_R7_4 12328 1        
+op_lw     R1_to_R7_5 12489 1        
+op_lw     R1_to_R7_2 12579 1        
+op_addi   R1_to_R7_1 4219  1        
+op_addi   R1_to_R7_6 4204  1        
+op_addi   R1_to_R7_7 4054  1        
+op_addi   R0         4000  1        
+op_addi   R1_to_R7_5 4078  1        
+op_addi   R1_to_R7_3 4161  1        
+op_addi   R1_to_R7_2 4035  1        
+op_addi   R1_to_R7_4 4189  1        
+op_xor    R0         8279  1        
+op_xor    R1_to_R7_7 8309  1        
+op_xor    R1_to_R7_1 8342  1        
+op_xor    R1_to_R7_6 8348  1        
+op_xor    R1_to_R7_2 8214  1        
+op_xor    R1_to_R7_3 8324  1        
+op_xor    R1_to_R7_5 8518  1        
+op_xor    R1_to_R7_4 8380  1        
+op_or     R1_to_R7_7 8234  1        
+op_or     R1_to_R7_6 8400  1        
+op_or     R1_to_R7_1 8216  1        
+op_or     R0         8410  1        
+op_or     R1_to_R7_2 8404  1        
+op_or     R1_to_R7_5 8364  1        
+op_or     R1_to_R7_3 8352  1        
+op_or     R1_to_R7_4 8352  1        
+op_and    R0         8299  1        
+op_and    R1_to_R7_7 8238  1        
+op_and    R1_to_R7_1 8389  1        
+op_and    R1_to_R7_6 8260  1        
+op_and    R1_to_R7_5 8249  1        
+op_and    R1_to_R7_3 8391  1        
+op_and    R1_to_R7_4 8146  1        
+op_and    R1_to_R7_2 8322  1        
+op_sub    R1_to_R7_7 8352  1        
+op_sub    R1_to_R7_1 8432  1        
+op_sub    R1_to_R7_6 8237  1        
+op_sub    R0         8333  1        
+op_sub    R1_to_R7_4 8245  1        
+op_sub    R1_to_R7_3 8294  1        
+op_sub    R1_to_R7_5 8563  1        
+op_sub    R1_to_R7_2 8327  1        
+op_add    R0         8368  1        
+op_add    R1_to_R7_7 8340  1        
+op_add    R1_to_R7_6 8223  1        
+op_add    R1_to_R7_1 8483  1        
+op_add    R1_to_R7_5 8242  1        
+op_add    R1_to_R7_2 8304  1        
+op_add    R1_to_R7_4 8316  1        
+op_add    R1_to_R7_3 8170  1        
+
+
+User Defined Cross Bins for cr_opcode_rd
+
+
+Excluded/Illegal bins
+
+NAME  COUNT STATUS   
+no_rd 0     Excluded 
+
+
+-------------------------------------------------------------------------------
+===============================================================================
+Group Instance : tb_top.coverage.cg_cpu
+===============================================================================
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING 
+100.00 1      100    1        64           64            
+
+
+Group:
+
+SCORE  INSTANCES WEIGHT GOAL   AT LEAST PER INSTANCE AUTO BIN MAX PRINT MISSING COMMENT NAME                        
+100.00 100.00    1      100    1        1            64           64                    $unit::cpu_coverage::cg_cpu 
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group Instance   tb_top.coverage.cg_cpu
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 38       0         38      100.00  
+Crosses   72       0         72      100.00  
+
+
+Variables for Group Instance  tb_top.coverage.cg_cpu
+
+
+VARIABLE  EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_opcode 14       0         14      100.00  100  1      1        0                    
+cp_rd     8        0         8       100.00  100  1      1        0                    
+cp_rs1    8        0         8       100.00  100  1      1        0                    
+cp_rs2    8        0         8       100.00  100  1      1        0                    
+
+
+Crosses for Group Instance  tb_top.coverage.cg_cpu
+
+
+CROSS        EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST PRINT MISSING COMMENT 
+cr_opcode_rd 72       0         72      100.00  100  1      1        0                     
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_opcode
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 14       0         14      100.00  
+
+
+User Defined Bins for cp_opcode
+
+
+Bins
+
+NAME    COUNT  AT LEAST 
+op_ret  16577  1        
+op_jal  99820  1        
+op_jmp  100396 1        
+op_bne  100339 1        
+op_beq  100364 1        
+op_lui  16713  1        
+op_sw   99864  1        
+op_lw   100018 1        
+op_addi 32940  1        
+op_xor  66714  1        
+op_or   66732  1        
+op_and  66294  1        
+op_sub  66783  1        
+op_add  66446  1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_rd
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 8        0         8       100.00  
+
+
+User Defined Bins for cp_rd
+
+
+Bins
+
+NAME       COUNT  AT LEAST 
+R1_to_R7_1 125577 1        
+R1_to_R7_2 124928 1        
+R1_to_R7_3 124889 1        
+R1_to_R7_4 124498 1        
+R1_to_R7_5 125281 1        
+R1_to_R7_6 125188 1        
+R1_to_R7_7 124858 1        
+R0         124781 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_rs1
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 8        0         8       100.00  
+
+
+User Defined Bins for cp_rs1
+
+
+Bins
+
+NAME       COUNT  AT LEAST 
+R0_to_R7_0 125273 1        
+R0_to_R7_1 125494 1        
+R0_to_R7_2 124873 1        
+R0_to_R7_3 124760 1        
+R0_to_R7_4 124835 1        
+R0_to_R7_5 124954 1        
+R0_to_R7_6 124801 1        
+R0_to_R7_7 125010 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_rs2
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 8        0         8       100.00  
+
+
+User Defined Bins for cp_rs2
+
+
+Bins
+
+NAME       COUNT  AT LEAST 
+R0_to_R7_0 124123 1        
+R0_to_R7_1 125131 1        
+R0_to_R7_2 125279 1        
+R0_to_R7_3 125371 1        
+R0_to_R7_4 125445 1        
+R0_to_R7_5 124877 1        
+R0_to_R7_6 125264 1        
+R0_to_R7_7 124510 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Cross cr_opcode_rd
+
+
+Samples crossed: cp_opcode cp_rd
+CATEGORY                           EXPECTED UNCOVERED COVERED PERCENT MISSING 
+TOTAL                              72       0         72      100.00          
+Automatically Generated Cross Bins 72       0         72      100.00          
+User Defined Cross Bins            0        0         0                       
+
+
+Automatically Generated Cross Bins for cr_opcode_rd
+
+
+Bins
+
+cp_opcode cp_rd      COUNT AT LEAST 
+op_jal    R0         12423 1        
+op_jal    R1_to_R7_7 12630 1        
+op_jal    R1_to_R7_6 12463 1        
+op_jal    R1_to_R7_1 12546 1        
+op_jal    R1_to_R7_2 12374 1        
+op_jal    R1_to_R7_3 12553 1        
+op_jal    R1_to_R7_4 12383 1        
+op_jal    R1_to_R7_5 12448 1        
+op_lui    R1_to_R7_6 2132  1        
+op_lui    R1_to_R7_7 2188  1        
+op_lui    R0         2084  1        
+op_lui    R1_to_R7_1 2149  1        
+op_lui    R1_to_R7_2 1945  1        
+op_lui    R1_to_R7_4 2113  1        
+op_lui    R1_to_R7_5 2069  1        
+op_lui    R1_to_R7_3 2033  1        
+op_lw     R0         12365 1        
+op_lw     R1_to_R7_1 12487 1        
+op_lw     R1_to_R7_6 12547 1        
+op_lw     R1_to_R7_7 12709 1        
+op_lw     R1_to_R7_3 12514 1        
+op_lw     R1_to_R7_4 12328 1        
+op_lw     R1_to_R7_5 12489 1        
+op_lw     R1_to_R7_2 12579 1        
+op_addi   R1_to_R7_1 4219  1        
+op_addi   R1_to_R7_6 4204  1        
+op_addi   R1_to_R7_7 4054  1        
+op_addi   R0         4000  1        
+op_addi   R1_to_R7_5 4078  1        
+op_addi   R1_to_R7_3 4161  1        
+op_addi   R1_to_R7_2 4035  1        
+op_addi   R1_to_R7_4 4189  1        
+op_xor    R0         8279  1        
+op_xor    R1_to_R7_7 8309  1        
+op_xor    R1_to_R7_1 8342  1        
+op_xor    R1_to_R7_6 8348  1        
+op_xor    R1_to_R7_2 8214  1        
+op_xor    R1_to_R7_3 8324  1        
+op_xor    R1_to_R7_5 8518  1        
+op_xor    R1_to_R7_4 8380  1        
+op_or     R1_to_R7_7 8234  1        
+op_or     R1_to_R7_6 8400  1        
+op_or     R1_to_R7_1 8216  1        
+op_or     R0         8410  1        
+op_or     R1_to_R7_2 8404  1        
+op_or     R1_to_R7_5 8364  1        
+op_or     R1_to_R7_3 8352  1        
+op_or     R1_to_R7_4 8352  1        
+op_and    R0         8299  1        
+op_and    R1_to_R7_7 8238  1        
+op_and    R1_to_R7_1 8389  1        
+op_and    R1_to_R7_6 8260  1        
+op_and    R1_to_R7_5 8249  1        
+op_and    R1_to_R7_3 8391  1        
+op_and    R1_to_R7_4 8146  1        
+op_and    R1_to_R7_2 8322  1        
+op_sub    R1_to_R7_7 8352  1        
+op_sub    R1_to_R7_1 8432  1        
+op_sub    R1_to_R7_6 8237  1        
+op_sub    R0         8333  1        
+op_sub    R1_to_R7_4 8245  1        
+op_sub    R1_to_R7_3 8294  1        
+op_sub    R1_to_R7_5 8563  1        
+op_sub    R1_to_R7_2 8327  1        
+op_add    R0         8368  1        
+op_add    R1_to_R7_7 8340  1        
+op_add    R1_to_R7_6 8223  1        
+op_add    R1_to_R7_1 8483  1        
+op_add    R1_to_R7_5 8242  1        
+op_add    R1_to_R7_2 8304  1        
+op_add    R1_to_R7_4 8316  1        
+op_add    R1_to_R7_3 8170  1        
+
+
+User Defined Cross Bins for cr_opcode_rd
+
+
+Excluded/Illegal bins
+
+NAME  COUNT STATUS   
+no_rd 0     Excluded 
+
+
