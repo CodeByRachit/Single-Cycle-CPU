@@ -42,46 +42,18 @@ class cpu_item;
         };
     }
 
-    // Formatting constraints to keep unused fields clean
-    constraint c_unused_fields {
-        // R-Type uses rd, rs1, rs2 (except RET uses only rs1)
-        if (opcode inside {OP_ADD, OP_SUB, OP_AND, OP_OR, OP_XOR}) {
-            imm == 12'b0;
-        }
-        if (opcode == OP_RET) {
-            imm == 12'b0;
-            rd == 3'b0;
-            rs2 == 3'b0;
-        }
-        
-        // I-Type uses rd, rs1, and imm[5:0]
-        if (opcode inside {OP_ADDI, OP_LW, OP_SW, OP_BEQ, OP_BNE, OP_LUI}) {
-            imm[11:6] == 6'b0; // Only lower 6 bits used
-            if (opcode inside {OP_BEQ, OP_BNE, OP_SW}) { // These don't write to rd
-                rd == 3'b0;
-            }
-            if (opcode == OP_LUI) { // LUI doesn't use rs1
-                rs1 == 3'b0;
-            }
-        }
-        
-        // J-Type uses imm[11:0]
-        if (opcode inside {OP_JMP, OP_JAL}) {
-            rd == 3'b0;
-            rs1 == 3'b0;
-            rs2 == 3'b0;
-        }
-    }
+
 
     // Function to assemble the 16-bit instruction word based on format
     function bit [15:0] to_inst();
         case (opcode)
-            // R-Type
+            // R-Type (includes garbage imm[2:0])
             OP_ADD, OP_SUB, OP_AND, OP_OR, OP_XOR: 
-                return {opcode[3:0], rd[2:0], rs1[2:0], rs2[2:0], 3'b000};
+                return {opcode[3:0], rd[2:0], rs1[2:0], rs2[2:0], imm[2:0]};
             
+            // RET uses only rs1, so blast garbage into rd, rs2, and imm[2:0]
             OP_RET:
-                return {opcode[3:0], 3'b000, rs1[2:0], 6'b000000};
+                return {opcode[3:0], rd[2:0], rs1[2:0], rs2[2:0], imm[2:0]};
                 
             // I-Type
             OP_ADDI, OP_LW, OP_SW, OP_BEQ, OP_BNE, OP_LUI:

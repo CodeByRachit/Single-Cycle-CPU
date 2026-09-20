@@ -38,7 +38,7 @@ module tb_alu;
         $fdisplay(fd, "=== ALU UNIT TEST REPORT ===");
         
         // Random Tests
-        for (int i = 0; i < 1000; i++) begin
+        for (int i = 0; i < 10000; i++) begin
             A = $random;
             B = $random;
             ALUOp = $random % 5;

@@ -42,6 +42,45 @@ module tb_memory;
         end
     endtask
 
+    logic [15:0] shadow_rom [256];
+    logic [15:0] shadow_ram [256];
+
+    task automatic init_shadow_mem();
+        for (int i=0; i<256; i++) begin
+            shadow_rom[i] = $urandom;
+            imem.rom[i] = shadow_rom[i];
+            shadow_ram[i] = 16'hx; // ASIC RAMs are uninitialized
+        end
+    endtask
+
+    task automatic do_random_op();
+        bit [1:0] op_type = $urandom % 3; // 0: Read, 1: Write, 2: Idle
+        addr = $urandom % 256;
+        write_data = $urandom;
+        pc = $urandom % 256; // Also read random ROM address
+        
+        MemRead = (op_type == 0);
+        MemWrite = (op_type == 1);
+        
+        @(posedge clk);
+        #1; // Allow asynchronous reads to propagate
+        
+        // Predict
+        if (MemWrite) begin
+            shadow_ram[addr[7:0]] = write_data;
+        end
+        
+        // Check ROM
+        check_mem("IMEM Read", shadow_rom[pc[7:0]], instruction);
+        
+        // Check RAM
+        if (MemRead) begin
+            check_mem("DMEM Read", shadow_ram[addr[7:0]], read_data);
+        end else begin
+            check_mem("DMEM Read Disabled", 16'h0000, read_data);
+        end
+    endtask
+
     initial begin
         fd = $fopen("results/memory_report.log", "w");
         if (fd == 0) $fatal(1, "Could not open results/memory_report.log");
@@ -54,34 +93,15 @@ module tb_memory;
         write_data = 0;
         pc = 0;
 
-        // Note: IMEM is a ROM. For unit testing, it might be uninitialized unless we backdoor write.
-        // We will backdoor write to test it.
-        imem.rom[0] = 16'h1234;
-        imem.rom[5] = 16'hABCD;
+        init_shadow_mem();
         
-        #1;
-        pc = 0;
-        #1 check_mem("IMEM Read Addr 0", 16'h1234, instruction);
-        
-        pc = 16'd5;
-        #1 check_mem("IMEM Read Addr 5", 16'hABCD, instruction);
-
-        // Test DMEM Write and Read
+        // Let initialization settle
         @(posedge clk);
-        addr = 16'h0010;
-        write_data = 16'hBEEF;
-        MemWrite = 1;
-        MemRead = 0;
-        @(posedge clk); // Write happens
-        MemWrite = 0;
-        MemRead = 1;
-        #1; // Asynchronous read data valid
-        check_mem("DMEM Read Addr 0x10 after Write", 16'hBEEF, read_data);
-
-        // Test DMEM Read Disable
-        MemRead = 0;
-        #1;
-        check_mem("DMEM Read Disable (Hi-Z expected)", 16'h0000, read_data); // RTL defines 0 when MemRead=0
+        
+        // Random Tests
+        for (int i = 0; i < 10000; i++) begin
+            do_random_op();
+        end
 
         $fdisplay(fd, "\n=== SUMMARY ===");
         $fdisplay(fd, "Passed: %0d", pass_count);

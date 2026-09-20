@@ -11,8 +11,6 @@ DVEfiles/
 *.fsdb
 
 # Logs and Reports
-results/
-*.log
 flex*.log
 *.jou
 *.pb
