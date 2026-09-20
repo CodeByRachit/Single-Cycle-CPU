@@ -1,0 +1,24 @@
+# VCS Simulation Files
+simv
+simv_*
+csrc/
+*.daidir/
+ucli.key
+vc_hdrs.h
+DVEfiles/
+*.vpd
+*.vcd
+*.fsdb
+
+# Logs and Reports
+results/
+*.log
+flex*.log
+*.jou
+*.pb
+
+# OS/Editor generated files
+.DS_Store
+.vscode/
+*.swp
+*~
